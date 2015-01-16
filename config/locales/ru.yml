@@ -1,0 +1,46 @@
+ru:
+  activerecord:
+    models:
+      account:
+        one: Счет
+        many: Счета
+      agreement:
+        one: Договор
+        many: Договоры
+      client:
+        one: Клиент
+        many: Клиенты
+      clients_segments:
+        one: Сегмент клиента
+        many: Сегменты клиентов
+    attributes:
+      account:
+        old_id: Старый ID
+        number: Номер
+        start_date: Дата открытия
+        end_date: Дата закрытия
+        name: Наименование
+        agreement: Договор
+        collection: Коллекция счета
+      agreement:
+        old_id: Старый ID
+        type: Тип
+        client: Клиент
+        number: Номер
+        division: Подразделение
+        options: Настройки
+        start_date: Дата начала
+        end_date_plan: Дата окончания
+        end_date_fact: Дата закрытия
+        currency: Валюта
+        sum: Сумма
+      client:
+        old_id: ID ИБСО
+        id_crm: ID CRM
+        name: Наименование
+        inn: ИНН
+        kpp: КПП
+      clients_segments:
+        client: Клиент
+        segment: Сегмент
+        date: Дата
