@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 # Use sqlserver as the database for Active Record
 gem 'tiny_tds'
 gem 'ruby-odbc'
-gem 'activerecord-sqlserver-adapter'
+gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter'
 gem 'squeel'
 gem 'sass-rails', '~> 4.0.3'
 
