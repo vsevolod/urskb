@@ -49,8 +49,10 @@ gem 'haml'
 gem 'slim'
 
 # Assets
-#gem 'rails-assets-'
+gem 'rails-assets-bootstrap'
 gem 'rails-assets-angular'
+gem 'rails-assets-angular-bootstrap'
+gem 'rails-assets-angular-ui-router'
 
 gem 'angular-rails-templates'
 gem 'angularjs-rails-resource', '~> 1.1.1'
