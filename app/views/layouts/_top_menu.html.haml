@@ -1,0 +1,7 @@
+%nav.navbar.navbar-default(ng-controller="TopMenuCtrl")
+  .container-fluid
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li{'ng-repeat' => 'el in menu', 'ng-class' => "getClass(el.active)"}
+          %a(ui-sref="{{el.url}}")
+            {{el.name}}

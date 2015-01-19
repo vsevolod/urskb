@@ -7,7 +7,7 @@
 //= require modules/dictionary
 //= require_self
 //= require main
-//= require controllers/dictionary_ctrl
+//= require_tree ./controllers
 
 var URSKBApp = angular.module('URSKBApp', [
       'dictionary.services',

@@ -4,8 +4,11 @@ URSKBApp.config(["$stateProvider", "$urlRouterProvider", ($stateProvider, $urlRo
   #$urlRouterProvider.otherwise("/")
   
   $stateProvider
+    .state('/', {
+      url: '/'
+    })
     .state('/dictionaries', {
-      url: '/dictionaries',
+      url: '/dictionaries'
       templateUrl: 'dictionaries/index.html'
     })
 
