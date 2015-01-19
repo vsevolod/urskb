@@ -253,13 +253,13 @@ module TablesHash
     # START ================ Счета =====================
     '53_krOstSr_IB' => {
       model: Account,
-      find_by: Proc.new{|_model, row| _model.f(old_id: row['ID_ACC'], number: row['Основной номер'])}
+      find_by: Proc.new{|_model, row| _model.f(old_id: row['ID_ACC'], number: row['Основной номер'])},
       to: {
         old_id: 'ID_ACC',
-        number: 'Основной номер',
-        account_type: Proc.new{|row| ...}
+        number: 'Основной номер'
+        #account_type: Proc.new{|row| ...}
       }
-    },
+    }
     # END ================== Счета =====================
   }
 

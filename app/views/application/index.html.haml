@@ -1,0 +1,5 @@
+.content(ng-controller="DictionaryCtrl")
+  %ul
+    %li(ng-repeat='dictionary in dictionaries')
+      %a(href="#") {{dictionary.name}}
+      %i {{dictionary.tag}}

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
+source 'http://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -7,7 +7,8 @@ gem 'rails', '4.2.0'
 gem 'tiny_tds'
 gem 'ruby-odbc'
 gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter'
-gem 'squeel'
+gem 'active_model_serializers', '~> 0.8.0'
+gem 'squeel', github: 'danielrhodes/squeel'
 gem 'sass-rails', '~> 4.0.3'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -46,6 +47,13 @@ gem 'aasm'
 # Templates
 gem 'haml'
 gem 'slim'
+
+# Assets
+#gem 'rails-assets-'
+gem 'rails-assets-angular'
+
+gem 'angular-rails-templates'
+gem 'angularjs-rails-resource', '~> 1.1.1'
 
 group :development, :test do
   gem 'pry'
