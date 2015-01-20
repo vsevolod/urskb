@@ -1,7 +1,3 @@
 .show(ng-if='dictionary')
   %div(ui-view)
     %a.btn.btn-primary(ui-sref="dictionaries.show.edit({dictionaryId: dictionary.id})") Редактировать
-%ul
-  %li(ng-repeat='d in dictionaries')
-    %a(ui-sref="dictionaries.show({dictionaryId:d.id})") {{d.id}}::{{d.name}}
-    %i {{d.tag}}

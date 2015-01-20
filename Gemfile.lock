@@ -178,11 +178,15 @@ GEM
     rails-assets-angular (1.3.8)
     rails-assets-angular-bootstrap (0.11.2)
       rails-assets-angular (>= 1)
+    rails-assets-angular-breadcrumb (0.3.3)
+      rails-assets-angular (>= 1.0.8)
+      rails-assets-angular-ui-router (>= 0.2.0)
     rails-assets-angular-ui-router (0.2.13)
       rails-assets-angular (>= 1.0.8)
     rails-assets-bootstrap (3.3.1)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.1.3)
+    rails-assets-underscore (1.7.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.5)
@@ -307,8 +311,10 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails-assets-angular
   rails-assets-angular-bootstrap
+  rails-assets-angular-breadcrumb
   rails-assets-angular-ui-router
   rails-assets-bootstrap
+  rails-assets-underscore
   rspec
   rspec-rails
   ruby-odbc

@@ -50,9 +50,11 @@ gem 'slim'
 
 # Assets
 gem 'rails-assets-bootstrap'
+gem 'rails-assets-underscore'
 gem 'rails-assets-angular'
 gem 'rails-assets-angular-bootstrap'
 gem 'rails-assets-angular-ui-router'
+gem 'rails-assets-angular-breadcrumb'
 
 gem 'angular-rails-templates'
 gem 'angularjs-rails-resource', '~> 1.1.1'

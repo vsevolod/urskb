@@ -1,12 +1,32 @@
-class Api::DictionariesController < ApplicationController
+class Api::DictionariesController < ApiController
 
   def index
     @dictionaries = Dictionary.roots
     render json: @dictionaries
   end
 
+  def children
+    @dictionaries = Dictionary.find(params[:id]).children
+    render json: @dictionaries
+  end
+
   def show
-    @dictionary = Dictionary.where(params[:dictionary]).first
+    @dictionary = Dictionary.find(params[:id])
     render json: @dictionary
   end
+
+  def update
+    @dictionary = Dictionary.find(params[:id])
+    if @dictionary.update_attributes dictionary_attributes
+      render json: @dictionary
+    else
+      render_json_error @dictionary
+    end
+  end
+
+  private
+
+    def dictionary_attributes
+      params.require(:dictionary).permit(:name, :tag)
+    end
 end

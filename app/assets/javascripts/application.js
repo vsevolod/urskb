@@ -1,6 +1,9 @@
+//= require jquery
+//= require underscore
 //= require angular
 //= require angular-bootstrap
 //= require angular-ui-router
+//= require angular-breadcrumb
 //= require angular-rails-templates
 //= require_tree ./templates
 //= require angularjs/rails/resource
@@ -12,5 +15,6 @@
 var URSKBApp = angular.module('URSKBApp', [
       'dictionary.services',
       'templates',
-      'ui.router'
+      'ui.router',
+      'ncy-angular-breadcrumb'
     ]);

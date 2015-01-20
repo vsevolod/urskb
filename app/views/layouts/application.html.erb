@@ -9,7 +9,10 @@
 <body>
 
 <%= render '/layouts/top_menu' %>
-<%= yield %>
+<div class='container'>
+  <div ncy-breadcrumb></div>
+  <%= yield %>
+</div>
 
 </body>
 </html>

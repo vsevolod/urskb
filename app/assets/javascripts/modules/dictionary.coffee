@@ -4,6 +4,8 @@ angular.module('dictionary.services', ['rails'])
       url: '/api/dictionaries'
       name: 'dictionary'
     })
+    resource.children = (id) ->
+      return this.$get("#{this.$url()}/#{id}/children")
 
     resource
   ]

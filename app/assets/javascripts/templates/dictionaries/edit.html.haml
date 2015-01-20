@@ -1,0 +1,9 @@
+%form.dictionary_form
+  .form-group(name='name')
+    %label Название
+    %input.form-control(ng-model="dictionary.name")
+  .form-group(name='tag')
+    %label Тэг
+    %input.form-control(ng-model="dictionary.tag")
+  %button.btn.btn-success(ng-click='save()')
+    Сохранить
