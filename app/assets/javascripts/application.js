@@ -14,6 +14,8 @@
 
 var URSKBApp = angular.module('URSKBApp', [
       'dictionary.services',
+      //= require modules/directives
+      //'new.edit',
       'templates',
       'ui.router',
       'ncy-angular-breadcrumb'

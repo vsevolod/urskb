@@ -15,6 +15,15 @@ class Api::DictionariesController < ApiController
     render json: @dictionary
   end
 
+  def create
+    @dictionary = Dictionary.new(dictionary_attributes)
+    if @dictionary.save
+      render json: @dictionary
+    else
+      render_json_error @dictionary
+    end
+  end
+
   def update
     @dictionary = Dictionary.find(params[:id])
     if @dictionary.update_attributes dictionary_attributes
@@ -27,6 +36,6 @@ class Api::DictionariesController < ApiController
   private
 
     def dictionary_attributes
-      params.require(:dictionary).permit(:name, :tag)
+      params.require(:dictionary).permit(:name, :tag, :parent_id)
     end
 end

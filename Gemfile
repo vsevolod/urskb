@@ -55,6 +55,7 @@ gem 'rails-assets-angular'
 gem 'rails-assets-angular-bootstrap'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-breadcrumb'
+#gem 'rails-assets-angular-ui-router.stateHelper'
 
 gem 'angular-rails-templates'
 gem 'angularjs-rails-resource', '~> 1.1.1'

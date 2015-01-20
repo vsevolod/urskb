@@ -1,6 +1,5 @@
-.show(ng-if='dictionary')
-  %div(ui-view)
-    %a.btn.btn-primary(ui-sref="dictionaries.show.edit({dictionaryId: dictionary.id})") Редактировать
+%a.btn.btn-primary{'ng-if' => 'dictionary', 'ng-click' => "edit()"} Редактировать
+%a.btn.btn-success{'ng-click' => "new()"} Добавить
 %ul
   %li(ng-repeat='d in dictionaries')
     %a(ui-sref="dictionaries.show({dictionaryId:d.id})") {{d.id}}::{{d.name}}

@@ -25,5 +25,10 @@ URSKBApp.config(["$httpProvider", "$stateProvider", "$urlRouterProvider", ($http
       templateUrl: 'dictionaries/edit.html'
       ncyBreadcrumb: {label: 'Редактирование'}
     })
+    #.state('dictionaries.new', {
+    #  url: '/new'
+    #  templateUrl: 'dictionaries/new.html'
+    #  ncyBreadcrumb: {label: 'Добавление'}
+    #})
 
 ])
