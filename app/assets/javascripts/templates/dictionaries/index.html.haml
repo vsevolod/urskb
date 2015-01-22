@@ -1,6 +1,9 @@
+%h3{'ng-if' => 'dictionary'} {{dictionary.name}}
 %a.btn.btn-primary{'ng-if' => 'dictionary', 'ng-click' => "edit()"} Редактировать
 %a.btn.btn-success{'ng-click' => "new()"} Добавить
+%a.btn.btn-danger{'ng-if' => 'dictionary', 'ng-click' => "destroy()"} Удалить
+
 %ul
   %li(ng-repeat='d in dictionaries')
-    %a(ui-sref="dictionaries.show({dictionaryId:d.id})") {{d.id}}::{{d.name}}
+    %a(ui-sref="dictionaries.show({dictionaryId:d.id})") {{d.name}}
     %i {{d.tag}}

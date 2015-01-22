@@ -22,7 +22,20 @@ URSKBApp
         $scope.updateVariables(toParams)
 
     $scope.edit = ->
-      $state.go('.edit', $stateParams)
+      $state.go('dictionaries.show.edit', $stateParams)
+
+    $scope.new = ->
+      url = if $scope.dictionary then 'dictionaries.show.new' else 'dictionaries.new'
+      console.log(url)
+      $state.go(url, $stateParams)
+
+    $scope.destroy = ->
+      $scope.dictionary.delete().then (result) ->
+        if $scope.dictionary.parent_id
+          $state.go("dictionaries.show({dictionaryId:#{$scope.dictionary.parent_id}})")
+        else
+          $scope.dictionary = null
+          $state.go("dictionaries")
 
     $scope.save = ->
       selector = 'form.dictionary_form .form-group'
@@ -36,8 +49,8 @@ URSKBApp
     $scope.create = ->
       selector = 'form.new_dictionary_form .form-group'
       $(selector).removeClass('has-error')
-      new_dictionary.parent_id = dictionary.id if dictionary
-      new Dictionary(new_dictionary).create().then (result) ->
+      $scope.new_dictionary.parent_id = $scope.dictionary.id if $scope.dictionary
+      new Dictionary($scope.new_dictionary).create().then (result) ->
         $state.go("^")
       , (error_answer) ->
         _.each error_answer.data.errors, (v, k) ->

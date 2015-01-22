@@ -18,17 +18,29 @@ URSKBApp.config(["$httpProvider", "$stateProvider", "$urlRouterProvider", ($http
     .state('dictionaries.show', {
       url: '/{dictionaryId:[0-9]+}'
       templateUrl: 'dictionaries/index.html'
+      controller: 'DictionaryCtrl'
       ncyBreadcrumb: {label: '{{dictionary.name}}'}
     })
     .state('dictionaries.show.edit', {
       url: '/edit'
-      templateUrl: 'dictionaries/edit.html'
       ncyBreadcrumb: {label: 'Редактирование'}
+      views: {
+        'form@': {templateUrl: 'dictionaries/edit.html', controller: 'DictionaryCtrl'}
+      }
     })
-    #.state('dictionaries.new', {
-    #  url: '/new'
-    #  templateUrl: 'dictionaries/new.html'
-    #  ncyBreadcrumb: {label: 'Добавление'}
-    #})
+    .state('dictionaries.new', {
+      url: '/new'
+      ncyBreadcrumb: {label: 'Добавление'}
+      views: {
+        'form@': {templateUrl: 'dictionaries/new.html', controller: 'DictionaryCtrl'}
+      }
+    })
+    .state('dictionaries.show.new', {
+      url: '/new'
+      ncyBreadcrumb: {label: 'Добавление'}
+      views: {
+        'form@': {templateUrl: 'dictionaries/new.html', controller: 'DictionaryCtrl'}
+      }
+    })
 
 ])

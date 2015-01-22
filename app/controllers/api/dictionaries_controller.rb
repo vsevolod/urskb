@@ -33,6 +33,15 @@ class Api::DictionariesController < ApiController
     end
   end
 
+  def destroy
+    @dictionary = Dictionary.find(params[:id])
+    if @dictionary.destroy
+      render json: {status: 'Complete'}
+    else
+      render_json_error @dictionary
+    end
+  end
+
   private
 
     def dictionary_attributes
