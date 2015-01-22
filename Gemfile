@@ -4,9 +4,12 @@ source 'http://rails-assets.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlserver as the database for Active Record
-gem 'tiny_tds'
-gem 'ruby-odbc'
-gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter'
+gem 'tiny_tds', platforms: [:mingw, :mswin]
+gem 'ruby-odbc', platforms: [:mingw, :mswin]
+
+gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', platforms: [:mingw, :mswin]
+gem 'pg', platforms: [:ruby]
+
 gem 'active_model_serializers', '~> 0.8.0'
 gem 'squeel', github: 'danielrhodes/squeel'
 gem 'sass-rails', '~> 4.0.3'

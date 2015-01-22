@@ -1,8 +1,10 @@
 # coding: utf-8
 # Для работы с ADODB (Access DB)
 
-require './lib/adodb_connection'
-require './lib/update_tables'
+unless RUBY_PLATFORM != 'ruby'
+
+require './lib/win/adodb_connection'
+require './lib/win/update_tables'
 include UpdateTables
 
 def ptable(table_name, &block)
@@ -77,4 +79,5 @@ namespace :adodb do
 
   end
 
+end
 end
