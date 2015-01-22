@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122063303) do
+ActiveRecord::Schema.define(version: 20150122082151) do
 
 # Could not dump table "NPL5" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(version: 20150122063303) do
     t.integer  "account_client_id", limit: 4
     t.string   "class_id",          limit: 255
     t.text     "options",           limit: 2147483647
+    t.integer  "client_id",         limit: 4
   end
 
   add_index "accounts", ["account_client_id"], name: "index_accounts_on_account_client_id"
   add_index "accounts", ["agreement_id"], name: "index_accounts_on_agreement_id"
+  add_index "accounts", ["client_id"], name: "index_accounts_on_client_id"
   add_index "accounts", ["currency_id"], name: "index_accounts_on_currency_id"
   add_index "accounts", ["name_id"], name: "index_accounts_on_name_id"
   add_index "accounts", ["number"], name: "index_accounts_on_number"

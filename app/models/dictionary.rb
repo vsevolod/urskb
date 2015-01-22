@@ -10,4 +10,8 @@ class Dictionary < ActiveRecord::Base
     tag.children.where(name: name).first_or_create
   end
 
+  def self.[](tag)
+    self.find_by_tag(tag)
+  end
+
 end

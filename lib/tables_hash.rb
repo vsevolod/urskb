@@ -53,6 +53,7 @@ def get_agreement_state_proc(field)
     when 'Открыт' then 'open'
     when 'Зарезервирован дистанционно' then 'reserved'
     when 'Помечен к открытию' then 'marked_for_open'
+    when 'Помечен к закрытию' then 'marked_for_close'
     else
       'worked'
     end
@@ -256,8 +257,28 @@ module TablesHash
       find_by: Proc.new{|_model, row| _model.f(old_id: row['ID_ACC'], number: row['Основной номер'])},
       to: {
         old_id: 'ID_ACC',
-        number: 'Основной номер'
-        #account_type: Proc.new{|row| ...}
+        number: 'Основной номер',
+        account_type: Proc.new{|row| Dictionary['account_type_regexp'].children.find{|d| row['Основной номер'] !~ Regexp.new(d.value)}.tag.gsub('_regexp', '')},
+        currency_id: {type: 'to_dictionary', options: {tag: 'currency', old_name: 'Вал'}},
+        statement_id: 'ID_VIP',
+        start_date: 'Дата открытия',
+        end_date: 'Дата закрытия',
+        state: get_agreement_state_proc('Обобщенный статус'),
+        vsb_id: 'ID VSB',
+        orgstruct_code: 'Код оргструкт',
+        note: 'Примечания',
+        class_id: 'CLASS_ID',
+        consolidate_account: 'Сводный счет Основной номер',
+        filial: 'Филиал Условный номер',
+        account_client_id: get_client_proc({old_id: 'ID_CLIENT_RASCH', name: 'Клиент для расчетов', inn: 'ИНН клиента для расчетов', kpp: 'КПП клиента для расчетов', id_crm: 'ID_CRM', okpo: 'ОКПО клиента для расчетов', ogrn: 'ОГРН клиента для расчетов'}),
+        client_id: get_client_proc()
+      #},
+      #additional: {
+      #  after_save: Proc.new{|object, row|
+      #    # Добавляем Клиента для расчетов
+      #    client = Client.
+      #    object.accounts.f(old_id: row['ID_RASCH'], number: row['Расчетный счет']).save
+      #  }
       }
     }
     # END ================== Счета =====================
