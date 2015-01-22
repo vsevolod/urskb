@@ -68,7 +68,6 @@ module UpdateTables
 
   def save_object(object)
     if object.new_record?
-      binding.pry
       if object.save
         if object.class.name == 'Dictionary'
           print 'D'

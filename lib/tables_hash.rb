@@ -264,14 +264,15 @@ module TablesHash
         start_date: 'Дата открытия',
         end_date: 'Дата закрытия',
         state: get_agreement_state_proc('Обобщенный статус'),
-        vsb_id: 'ID VSB',
+        vsb_id: 'ID_VSB',
         orgstruct_code: 'Код оргструкт',
         note: 'Примечания',
         class_id: 'CLASS_ID',
         consolidate_account: 'Сводный счет Основной номер',
         filial: 'Филиал Условный номер',
-        account_client_id: get_client_proc({old_id: 'ID_CLIENT_RASCH', name: 'Клиент для расчетов', inn: 'ИНН клиента для расчетов', kpp: 'КПП клиента для расчетов', id_crm: 'ID_CRM', okpo: 'ОКПО клиента для расчетов', ogrn: 'ОГРН клиента для расчетов'}),
-        client_id: get_client_proc()
+        account_client_id: get_client_proc(),
+        owner_id: get_client_proc({old_id: 'ID_CLIENT_RASCH', name: 'Клиент для расчетов', inn: 'ИНН клиента для расчетов', kpp: 'КПП клиента для расчетов', id_crm: 'ID_CRM', okpo: 'ОКПО клиента для расчетов', ogrn: 'ОГРН клиента для расчетов'}),
+        agreement_id: {type: 'from_table', options: {foreign_key: 'ID_DOG', table: '66_krAccDog'}}
       #},
       #additional: {
       #  after_save: Proc.new{|object, row|

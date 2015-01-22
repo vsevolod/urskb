@@ -19,7 +19,7 @@ class Account < ActiveRecord::Base
   
   belongs_to :name, class_name: 'Dictionary'
   belongs_to :agreement
-  belongs_to :client
+  belongs_to :owner, class_name: 'Client'
   belongs_to :account_client, class_name: 'Client'
 
   validates :number, uniqueness: {scope: [:old_id], case_sensitive: false}
