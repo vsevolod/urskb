@@ -1,5 +1,5 @@
 class DictionarySerializer < ActiveModel::Serializer
-  attributes :id, :name, :tag, :parent_id
+  attributes :id, :name, :tag, :value, :parent_id
 
   # has_many :...
 

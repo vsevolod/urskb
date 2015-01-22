@@ -45,6 +45,6 @@ class Api::DictionariesController < ApiController
   private
 
     def dictionary_attributes
-      params.require(:dictionary).permit(:name, :tag, :parent_id)
+      params.require(:dictionary).permit(:name, :tag, :parent_id, :value)
     end
 end
