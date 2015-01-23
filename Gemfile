@@ -5,7 +5,7 @@ source 'http://rails-assets.org'
 gem 'rails', '4.2.0'
 # Use sqlserver as the database for Active Record
 gem 'tiny_tds'
-gem 'ruby-odbc'
+#gem 'ruby-odbc'
 gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter'
 gem 'active_model_serializers', '~> 0.8.0'
 gem 'squeel', github: 'danielrhodes/squeel'
@@ -65,14 +65,14 @@ group :development, :test do
   gem 'faker' # https://github.com/stympy/faker
   gem 'factory_girl_rails' # https://github.com/thoughtbot/factory_girl_rails
   gem 'database_cleaner'
-  gem 'rspec'
-  gem 'rspec-rails' # https://github.com/rspec/rspec-rails
+  #gem 'rspec'
+  #gem 'rspec-rails' # https://github.com/rspec/rspec-rails
   gem 'shoulda-matchers' # https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-callback-matchers', '~> 1.0'
-  gem 'spring-commands-rspec'
+  #gem 'spring-commands-rspec'
   gem 'jasmine'
   gem 'jasmine-rails'
-  gem 'mailcatcher'
+  #gem 'mailcatcher'
   gem 'did_you_mean'
   gem 'rack-livereload'
 end
