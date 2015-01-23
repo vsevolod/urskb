@@ -273,13 +273,17 @@ module TablesHash
         account_client_id: get_client_proc(),
         owner_id: get_client_proc({old_id: 'ID_CLIENT_RASCH', name: 'Клиент для расчетов', inn: 'ИНН клиента для расчетов', kpp: 'КПП клиента для расчетов', id_crm: 'ID_CRM', okpo: 'ОКПО клиента для расчетов', ogrn: 'ОГРН клиента для расчетов'}),
         agreement_id: {type: 'from_table', options: {foreign_key: 'ID_DOG', table: '66_krAccDog'}}
-      #},
-      #additional: {
-      #  after_save: Proc.new{|object, row|
-      #    # Добавляем Клиента для расчетов
-      #    client = Client.
-      #    object.accounts.f(old_id: row['ID_RASCH'], number: row['Расчетный счет']).save
-      #  }
+      },
+      additional: {
+        after_save: Proc.new{|object, row|
+          # Добавляем AccountsDate
+          accounts_date = object.accounts_dates.where(date: row['Дата']).first_or_initialize
+          accounts_date.currency_balance = row['Остаток в валюте счета']
+          accounts_date.rate = row['Курс']
+          accounts_date.balance = row['Остаток в основной валюте']
+          accounts_date.division_id = get_agreement_division_proc('Код подр').call(row)
+          accounts_date.save
+        }
       }
     }
     # END ================== Счета =====================

@@ -21,6 +21,7 @@ class Account < ActiveRecord::Base
   belongs_to :agreement
   belongs_to :owner, class_name: 'Client'
   belongs_to :account_client, class_name: 'Client'
+  has_many   :accounts_dates
 
   validates :number, uniqueness: {scope: [:old_id], case_sensitive: false}
 

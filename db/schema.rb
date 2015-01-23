@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122063303) do
+ActiveRecord::Schema.define(version: 20150123015828) do
 
 # Could not dump table "NPL5" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150122063303) do
     t.integer  "division_id",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
   end
 
   add_index "accounts_dates", ["account_id"], name: "index_accounts_dates_on_account_id"
