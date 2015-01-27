@@ -63,7 +63,8 @@ end
 # Функция для вычисления подразделения из таблицы Options по ключу report_names
 def get_agreement_division_proc(field)
   Proc.new{|row|
-    Option.where(objectable_type: 'Division', key: 'report_names', value: row[field]).first.try(:objectable_id)
+    object_hash[row[field]] ||= Option.where(objectable_type: 'Division', key: 'report_names', value: row[field]).first.try(:objectable_id)
+    object_hash[row[field]]
   }
 end
 
@@ -180,13 +181,15 @@ module TablesHash
         after_save: Proc.new{|object, row|
           # Добавляем пустой счет
           account = object.accounts.f(old_id: row['ID_ACC'], number: row['Номер счета'])
-          account.collection = row['ID_COLLACC']
-          account.start_date = row['Начало действия счета']
-          account.name       = Dictionary.find_or_create_by_tag('accounts_name', row['Наименование счета'])
-          account.save
+          if account.new_record?
+            account.collection = row['ID_COLLACC']
+            account.start_date = row['Начало действия счета']
+            account.name       = Dictionary.find_or_create_by_tag('accounts_name', row['Наименование счета'])
+            account.save
+          end
 
           # Выставляем предка
-          if object.updog && (parent = object.class.find_by_old_id("66_krAccDog::#{object.updog}"))
+          if object.updog && object.ancestry.blank? && (parent = object.class.find_by_old_id("66_krAccDog::#{object.updog}"))
             if parent != object.parent
               object.parent = parent
               object.save
@@ -288,5 +291,11 @@ module TablesHash
     }
     # END ================== Счета =====================
   }
+
+  @@object_hash = {}
+
+  def object_hash
+    @@object_hash
+  end
 
 end

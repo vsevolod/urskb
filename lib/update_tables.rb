@@ -3,6 +3,11 @@ require './lib/tables_hash'
 module UpdateTables
   include TablesHash
 
+  @@dic_hash = {}
+  def dic_hash
+    @@dic_hash
+  end
+
   def update_table(file, table)
     connection = AdodbConnection.new(file)
     table_options = TABLES[table]
@@ -27,12 +32,17 @@ module UpdateTables
           case value[:type]
           when 'to_dictionary'
             # Переносим из таблицы в Dictionary
-            parent = Dictionary.where(options).first_or_initialize(name: options[:old_name])
-            save_object(parent)
-            object = parent.children.where(name: row[options[:old_name]]).first_or_initialize
-            save_object(object)
+            unless dic_hash[options]
+              dic_hash[options] ||= {
+                parent: Dictionary.where(options).first_or_create(name: options[:old_name]),
+                objects: {}
+              }
+            end
+            unless dic_hash[options][:objects][row[options[:old_name]]]
+              dic_hash[options][:objects][row[options[:old_name]]] = dic_hash[options][:parent].children.where(name: row[options[:old_name]]).first_or_create
+            end
 
-            conditions[key] = object.id
+            conditions[key] = dic_hash[options][:objects][row[options[:old_name]]].id
           when 'from_table'
             # Переносим из связанной таблицы
             # Условие - запись УЖЕ должна быть в таблице

@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 source 'http://rails-assets.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
-# Use sqlserver as the database for Active Record
+
+gem 'rails', '~>4.2' # '4.1.9'
+gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', ref: '5a5dd78d1749b3a5e06d691f740d9ade41707eed' #, tag: '4.1.0'
 gem 'tiny_tds'
-#gem 'ruby-odbc'
-gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter'
+
 gem 'active_model_serializers', '~> 0.8.0'
 gem 'squeel', github: 'danielrhodes/squeel'
 gem 'sass-rails', '~> 4.0.3'
@@ -60,23 +59,25 @@ gem 'rails-assets-angular-breadcrumb'
 gem 'angular-rails-templates'
 gem 'angularjs-rails-resource', '~> 1.1.1'
 
-group :development, :test do
+group :development, :test, :staging do
   gem 'pry'
   gem 'faker' # https://github.com/stympy/faker
   gem 'factory_girl_rails' # https://github.com/thoughtbot/factory_girl_rails
   gem 'database_cleaner'
-  #gem 'rspec'
-  #gem 'rspec-rails' # https://github.com/rspec/rspec-rails
   gem 'shoulda-matchers' # https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-callback-matchers', '~> 1.0'
-  #gem 'spring-commands-rspec'
   gem 'jasmine'
   gem 'jasmine-rails'
-  #gem 'mailcatcher'
   gem 'did_you_mean'
   gem 'rack-livereload'
 end
-group :development do
+#group :development, :test do
+#  gem 'rspec'
+#  gem 'rspec-rails' # https://github.com/rspec/rspec-rails
+#  gem 'spring-commands-rspec'
+#  gem 'mailcatcher'
+#end
+group :development, :staging do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request'

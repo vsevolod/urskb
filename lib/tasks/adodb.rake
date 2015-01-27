@@ -15,6 +15,8 @@ namespace :adodb do
 
   desc 'Update table in nsequence'
   task :update do
+    @@dic_hash = {}
+    @@object_hash = {}
     Rake::Task['adodb:update:dictionaries'].invoke
     Rake::Task['adodb:update:main'].invoke
     Rake::Task['adodb:update:agreements'].invoke
@@ -53,20 +55,20 @@ namespace :adodb do
     desc 'Update agreement tables'
     task agreements: :environment do
       ptable 'Кредитные договоры' do
-        update_table('./public/files/tables/66_krAccDog(forcopy).accdb', '66_krAccDog')
+        update_table('./public/files/tables/66_krAccDog.accdb', '66_krAccDog')
       end
       ptable 'Депозитные договоры' do
-        update_table('./public/files/tables/55_spisDep_IB(forcopy).accdb', '55_spisDep_IB')
+        update_table('./public/files/tables/55_spisDep_IB.accdb', '55_spisDep_IB')
       end
       ptable 'Договоры на РКО' do
-        update_table('./public/files/tables/34_407_474_426_Ib(forcopy).accdb', '34_407_474_426_Ib')
+        update_table('./public/files/tables/34_407_474_426_Ib.accdb', '34_407_474_426_Ib')
       end
     end
 
     desc 'Update accounts tables'
     task accounts: :environment do
       ptable '53 таблица' do
-        update_table('./public/files/tables/q4_2014_53_54.accdb', '53_krOstSr_IB')
+        update_table('./public/files/tables/q1_2015_53_54.accdb', '53_krOstSr_IB')
       end
     end
 
