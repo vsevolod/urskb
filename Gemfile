@@ -3,10 +3,13 @@ source 'http://rails-assets.org'
 
 
 gem 'rails', '~>4.2' # '4.1.9'
-gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', ref: '5a5dd78d1749b3a5e06d691f740d9ade41707eed' #, tag: '4.1.0'
 gem 'tiny_tds'
 
+#======== FOR MS SQL Server 2008 ===================
+gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', ref: '5a5dd78d1749b3a5e06d691f740d9ade41707eed' #, tag: '4.1.0'
 gem 'active_model_serializers', '~> 0.8.0'
+#===================================================
+
 gem 'squeel', github: 'danielrhodes/squeel'
 gem 'sass-rails', '~> 4.0.3'
 
@@ -50,8 +53,9 @@ gem 'slim'
 # Assets
 gem 'rails-assets-bootstrap'
 gem 'rails-assets-underscore'
-gem 'rails-assets-angular'
-gem 'rails-assets-angular-bootstrap'
+gem 'rails-assets-angular', '~> 1.3.0'
+# Temprorary blocked while not updated https://github.com/angular-ui/bootstrap-bower/issues/35
+#gem 'rails-assets-angular-bootstrap'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-breadcrumb'
 #gem 'rails-assets-angular-ui-router.stateHelper'

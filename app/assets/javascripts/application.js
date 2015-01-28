@@ -1,22 +1,23 @@
 //= require jquery
 //= require underscore
 //= require angular
-//= require angular-bootstrap
 //= require angular-ui-router
 //= require angular-breadcrumb
 //= require angular-rails-templates
 //= require_tree ./templates
 //= require angularjs/rails/resource
-//= require modules/dictionary
+//= require_tree ./modules
 //= require_self
 //= require main
 //= require_tree ./controllers
 
 var URSKBApp = angular.module('URSKBApp', [
-      'dictionary.services',
-      //= require modules/directives
-      //'new.edit',
-      'templates',
-      'ui.router',
-      'ncy-angular-breadcrumb'
-    ]);
+  'dictionary.services',
+  'indicator.services',
+  //= require angular-bootstrap
+  //'ui.bootstrap',
+  //'new.edit',
+  'templates',
+  'ui.router',
+  'ncy-angular-breadcrumb'
+]);

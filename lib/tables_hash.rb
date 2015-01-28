@@ -105,6 +105,16 @@ module TablesHash
         tag: 'group_segments' # Тэг для рутового элемента в таблице Dictionary
       }
     },
+    'IstTable' => {
+      model: Dictionary,
+      to: {
+        old_id: {type: 'old_id', options: {field: 'IDIstTable'}},
+        name: 'NameIstTable'
+      },
+      additional: {
+        tag: 'table_type'
+      }
+    },
     'Segment' => {
       model: Dictionary,
       to: {
@@ -123,6 +133,12 @@ module TablesHash
         child_indicator_id: {type: 'from_table', options: {foreign_key: 'IDSubPok', table: 'Pokazat'}},
         start_date: 'sDate',
         end_date: 'eDate',
+        sql_from: Proc.new{|row| Dictionary[:table_type].children.where(old_id: "IstTable::#{row['IDIstTable']}").first.try(:name) },
+        sql_column: 'StolbPokazat',
+        sql_divider: 'EdIzm',
+        sql_formul: 'Frml',
+        sql_where:  Proc.new{|row| row['Uslov'].blank? || row['Uslov'] == 'n' ? nil : row['Uslov']},
+        text_condition:     Proc.new{|row| row['Uslov'].blank? || row['Uslov'] == 'n' ? nil : row['Uslov']},
         level:  Proc.new{|row| row['TypeRule'].to_i}
       }
     },

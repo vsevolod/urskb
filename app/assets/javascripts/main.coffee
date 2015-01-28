@@ -9,6 +9,7 @@ URSKBApp.config(["$httpProvider", "$stateProvider", "$urlRouterProvider", ($http
       url: '/'
       ncyBreadcrumb: {label: 'Главная'}
     })
+    # Dictionaries - Словари
     .state('dictionaries', {
       url: '/dictionaries'
       templateUrl: 'dictionaries/index.html'
@@ -40,6 +41,40 @@ URSKBApp.config(["$httpProvider", "$stateProvider", "$urlRouterProvider", ($http
       ncyBreadcrumb: {label: 'Добавление'}
       views: {
         'form@': {templateUrl: 'dictionaries/new.html', controller: 'DictionaryCtrl'}
+      }
+    })
+    # Indicators - Индикаторы
+    .state('indicators', {
+      url: '/indicators'
+      templateUrl: 'indicators/index.html'
+      controller: 'IndicatorCtrl'
+      ncyBreadcrumb: {parent: '/', label: 'Показатели'}
+    })
+    .state('indicators.show', {
+      url: '/{indicatorId:[0-9]+}'
+      templateUrl: 'indicators/show.html'
+      controller: 'IndicatorCtrl'
+      ncyBreadcrumb: {label: '{{indicator.name}}'}
+    })
+    .state('indicators.show.edit', {
+      url: '/edit'
+      ncyBreadcrumb: {label: 'Редактирование'}
+      views: {
+        'form@': {templateUrl: 'indicators/edit.html', controller: 'IndicatorCtrl'}
+      }
+    })
+    .state('indicators.new', {
+      url: '/new'
+      ncyBreadcrumb: {label: 'Добавление'}
+      views: {
+        'form@': {templateUrl: 'indicators/new.html', controller: 'IndicatorCtrl'}
+      }
+    })
+    .state('indicators.show.new', {
+      url: '/new'
+      ncyBreadcrumb: {label: 'Добавление'}
+      views: {
+        'form@': {templateUrl: 'indicators/new.html', controller: 'IndicatorCtrl'}
       }
     })
 

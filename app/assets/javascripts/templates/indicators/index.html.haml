@@ -1,0 +1,26 @@
+%div{'ng-if' => 'indicator'}
+  %h3 {{indicator.name}}
+  %a.btn.btn-primary{'ng-click' => "edit()"} Редактировать
+  %a.btn.btn-danger{'ng-click' => "destroy()"} Удалить
+  %dl{'ng-if' => 'indicator.product'}
+    %dt Продукт:
+    %dd {{indicator.product.name}}
+  %dl{'ng-if' => 'indicator.accum_level'}
+    %dt Уровень:
+    %dd {{indicator.accum_level.name}}
+%a.btn.btn-success{'ng-click' => "new()"} Добавить
+
+%ul{'ng-if' => 'indicator_rules.length > 0'}
+  %li(ng-repeat='rule in indicator_rules')
+    %a(ui-sref="indicators.show({indicatorId:rule.childIndicatorId})") {{rule.childName}}
+    %dl{'ng-if' => 'rule.startDate || rule.endDate'}
+      %dt Период:
+      %dd
+        {{rule.startDate}}
+        %span{'ng-if' => 'rule.startDate && rule.endDate'} &mdash;
+        {{rule.endDate}}
+    %pre {{rule.sql}}
+
+%ul{'ng-if' => 'indicators.length > 0'}
+  %li(ng-repeat='d in indicators')
+    %a(ui-sref="indicators.show({indicatorId:d.id})") {{d.name}}

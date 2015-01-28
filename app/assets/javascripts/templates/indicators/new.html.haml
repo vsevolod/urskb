@@ -1,0 +1,5 @@
+%form.new_dictionary_form
+
+  = view_partial 'dictionaries/_form', {attribute: 'new_dictionary'}
+  %button.btn.btn-success(ng-click='create()')
+    Создать

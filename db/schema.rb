@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123015828) do
+ActiveRecord::Schema.define(version: 20150128071403) do
 
 # Could not dump table "NPL5" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -147,6 +147,8 @@ ActiveRecord::Schema.define(version: 20150123015828) do
     t.string   "old_id",              limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "text_condition",      limit: 2147483647
+    t.text     "options",             limit: 2147483647
   end
 
   add_index "indicator_rules", ["child_indicator_id"], name: "index_indicator_rules_on_child_indicator_id"

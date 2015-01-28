@@ -13,4 +13,6 @@ class Indicator < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: {scope: [:sh_name]}
 
+  scope :roots, -> { joins(:parent_rules).where(parent_rules: {parent_indicator_id: nil}) }
+
 end

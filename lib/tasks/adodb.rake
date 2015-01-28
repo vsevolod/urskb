@@ -35,20 +35,23 @@ namespace :adodb do
       ptable 'Разновидность показателя' do
         update_table('./public/files/Settings/Settings.accdb', 'PokazatVar')
       end
+      ptable 'Таблицы' do
+        update_table('./public/files/Settings/Settings.accdb', 'IstTable')
+      end
     end
 
     desc 'Update main tables'
     task :main do
       ptable 'Показатель' do
-        update_table('./public/files/Settings/Settings.accdb', 'Pokazat')
+        #update_table('./public/files/Settings/Settings.accdb', 'Pokazat')
       end
       ptable 'Правила показателей' do
         update_table('./public/files/Settings/Settings.accdb', 'PokRules')
       end
       ptable 'Подразделения' do
-        update_table('./public/files/Settings/Settings.accdb', 'Podrazd')
-        Option.where(objectable_type: 'Division', key: 'report_names').delete_all
-        update_table('./public/files/Settings/Settings.accdb', 'PodrazdNames')
+        #update_table('./public/files/Settings/Settings.accdb', 'Podrazd')
+        #Option.where(objectable_type: 'Division', key: 'report_names').delete_all
+        #update_table('./public/files/Settings/Settings.accdb', 'PodrazdNames')
       end
     end
 
