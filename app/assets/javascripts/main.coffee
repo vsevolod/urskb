@@ -9,6 +9,15 @@ URSKBApp.config(["$httpProvider", "$stateProvider", "$urlRouterProvider", ($http
       url: '/'
       ncyBreadcrumb: {label: 'Главная'}
     })
+    # Clients - Клиент. всё о клиенте
+    .state('clients', {
+      url: 'clients'
+      views: {
+        '': {templateUrl: 'clients/index.html', controller: 'ClientCtrl'}
+        'form@': {templateUrl: 'clients/filter.html', controller: 'FilterClientCtrl'}
+      }
+      ncyBreadcrumb: {label: 'Клиент'}
+    })
     # Dictionaries - Словари
     .state('dictionaries', {
       url: '/dictionaries'

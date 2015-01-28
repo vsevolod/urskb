@@ -3,6 +3,7 @@ URSKBApp
 
     $scope.menu = [
       {name: 'Главная', url: '/', active: /^\/$/}
+      {name: 'Клиенты', url: 'clients', active: /^\/clients/}
       {name: 'Словари', url: 'dictionaries', active: /\/dictionaries/}
       {name: 'Показатели', url: 'indicators', active: /\/indicators/}
     ]

@@ -1,0 +1,7 @@
+%ul
+  %li(ng-repeat='c in clients')
+    %a(ui-sref="clients.show({clientId:c.id})") {{c.name}}
+    %b(ng-if='c.inn') ИНН
+    {{c.inn}}
+    %b(ng-if='c.kpp') КПП
+    {{c.kpp}}

@@ -1,0 +1,13 @@
+%form.form
+  %fieldset
+    .form-group(name='name')
+      %label Название
+      %input.form-control(ng-model="client.name")
+    .form-group(name='inn')
+      %label ИНН
+      %input.form-control(ng-model="client.inn")
+    .form-group(name='kpp')
+      %label КПП
+      %input.form-control(ng-model="client.kpp")
+
+    %button(type="submit" class="btn btn-success" ng-click="filterClients()") Искать

@@ -14,6 +14,7 @@
 var URSKBApp = angular.module('URSKBApp', [
   'dictionary.services',
   'indicator.services',
+  'client.services',
   //= require angular-bootstrap
   //'ui.bootstrap',
   //'new.edit',
