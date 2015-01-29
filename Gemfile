@@ -12,6 +12,11 @@ gem 'pg', platforms: [:ruby]
 
 gem 'squeel', github: 'danielrhodes/squeel'
 gem 'sass-rails', '~> 4.0.3'
+#gem 'ox'
+#gem 'libxml-ruby'
+#gem 'gyoku' #from obj to xml
+#gem 'oga'
+#gem 'nokogiri'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

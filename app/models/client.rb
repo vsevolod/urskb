@@ -5,7 +5,7 @@ class Client < ActiveRecord::Base
     ogrn: 'ОГРН'
   }
 
-  store :options, accessors: STORE_OPTIONS.keys
+  store :xml_options, accessors: STORE_OPTIONS.keys, coder: XmlWrapper
 
   belongs_to :low_form, class_name: 'Dictionary'
   has_many :clients_segments

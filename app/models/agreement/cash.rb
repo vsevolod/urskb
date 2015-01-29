@@ -4,6 +4,6 @@ class Agreement::Cash < Agreement
     id_dog: 'ID_DOG',
   }
 
-  store :options, accessors: STORE_OPTIONS.keys
+  store :xml_options, accessors: STORE_OPTIONS.keys, coder: XmlWrapper
 
 end

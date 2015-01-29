@@ -15,6 +15,12 @@ class Api::IndicatorsController < ApiController
     render json: @indicator
   end
 
+  def calculate
+    @indicator = Indicator.find(params[:id])
+    @result = @indicator.calculate(params)
+    render json: @result
+  end
+
 #  def create
 #    @indicator = Indicator.new(indicator_attributes)
 #    if @indicator.save

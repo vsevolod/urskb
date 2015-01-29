@@ -11,7 +11,8 @@ class Agreement::Loan < Agreement
      id_dog: 'ID_DOG'
    }
 
-   store :options, accessors: STORE_OPTIONS.keys
+   store :xml_options, accessors: STORE_OPTIONS.keys, coder: XmlWrapper
+
    belongs_to_store :direction_business_plan
    belongs_to_store :credit_type
 

@@ -10,7 +10,7 @@ class Account < ActiveRecord::Base
     filial: 'Филиал'
   }
 
-  store :options, accessors: STORE_OPTIONS.keys
+  store :xml_options, accessors: STORE_OPTIONS.keys, coder: XmlWrapper
 
   aasm column: 'account_type' do
     state :term_loan           # Срочная ссуда (53, 41)

@@ -15,4 +15,14 @@ class Indicator < ActiveRecord::Base
 
   scope :roots, -> { joins(:parent_rules).where(parent_rules: {parent_indicator_id: nil}) }
 
+  # Подсчет показателя по дереву
+  def calculate(options)
+    self.children_rules.on(options['on']).to_a.sum do |rule|
+      if rule.text_condition
+        rule.calculate(options)
+      else
+        rule.child.calculate(options)
+      end
+    end
+  end
 end

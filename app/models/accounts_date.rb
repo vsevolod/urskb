@@ -9,6 +9,6 @@ class AccountsDate < ActiveRecord::Base
     previous_maturity_date: 'Предыдущая дата полного погашения просрочки'
   }
 
-  store :options, accessors: STORE_OPTIONS.keys
+  store :xml_options, accessors: STORE_OPTIONS.keys, coder: XmlWrapper
 
 end

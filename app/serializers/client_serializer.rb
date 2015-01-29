@@ -1,5 +1,5 @@
 class ClientSerializer < ActiveModel::Serializer
 
-  attributes :name, :inn, :kpp
+  attributes :id, :name, :inn, :kpp
 
 end

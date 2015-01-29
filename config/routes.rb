@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       end
       member do
         get :children
+        get :calculate # Вычисление показателя по параметрам
       end
     end
     resources :dictionaries do

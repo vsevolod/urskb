@@ -14,7 +14,7 @@ class Agreement::Deposit < Agreement
      balance_of_account: 'Остаток при закрытии'
    }
 
-   store :options, accessors: STORE_OPTIONS.keys
+  store :xml_options, accessors: STORE_OPTIONS.keys, coder: XmlWrapper
 
    belongs_to_store :agreement_mode
 
