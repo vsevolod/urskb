@@ -1,5 +1,5 @@
 URSKBApp
-  .controller 'FilterClientCtrl', ['$state', '$rootScope', '$stateParams', '$scope', 'Client', ($state, $rootScope, $stateParams, $scope, Client) ->
+  .controller 'ClientFilterCtrl', ['$state', '$rootScope', '$stateParams', '$scope', 'Client', ($state, $rootScope, $stateParams, $scope, Client) ->
     $scope.client = {}
 
     $scope.filterClients = () ->
