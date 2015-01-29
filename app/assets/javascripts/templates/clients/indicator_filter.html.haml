@@ -1,0 +1,7 @@
+%form.form
+  %fieldset
+    .form-group(name='name')
+      %label Название
+      %input.form-control(ng-model="indicators")
+
+    %button(type="submit" class="btn btn-success" ng-click="filterClients()") Искать
