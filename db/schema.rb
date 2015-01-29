@@ -13,17 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20150128071403) do
 
-# Could not dump table "NPL5" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.string   "old_id",            limit: 255
-    t.string   "number",            limit: 255
+    t.string   "old_id"
+    t.string   "number"
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "collection",        limit: 255
-    t.integer  "name_id",           limit: 4
-    t.integer  "agreement_id",      limit: 4
+    t.string   "collection"
+    t.integer  "name_id"
+    t.integer  "agreement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "account_type",      limit: 255
@@ -45,144 +45,145 @@ ActiveRecord::Schema.define(version: 20150128071403) do
   add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id"
 
   create_table "accounts_dates", force: :cascade do |t|
-    t.integer  "account_id",       limit: 4
-    t.text     "options",          limit: 2147483647
-    t.float    "balance",          limit: 24
-    t.float    "currency_balance", limit: 24
-    t.integer  "division_id",      limit: 4
+    t.integer  "account_id"
+    t.text     "options"
+    t.float    "balance"
+    t.float    "currency_balance"
+    t.integer  "division_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date"
   end
 
-  add_index "accounts_dates", ["account_id"], name: "index_accounts_dates_on_account_id"
-  add_index "accounts_dates", ["division_id"], name: "index_accounts_dates_on_division_id"
+  add_index "accounts_dates", ["account_id"], name: "index_accounts_dates_on_account_id", using: :btree
+  add_index "accounts_dates", ["division_id"], name: "index_accounts_dates_on_division_id", using: :btree
 
   create_table "agreements", force: :cascade do |t|
-    t.string   "old_id",        limit: 255
-    t.string   "updog",         limit: 255
-    t.string   "type",          limit: 255
-    t.string   "state",         limit: 255
-    t.string   "number",        limit: 255
-    t.text     "options",       limit: 2147483647
+    t.string   "old_id"
+    t.string   "updog"
+    t.string   "type"
+    t.string   "state"
+    t.string   "number"
+    t.text     "options"
     t.date     "start_date"
     t.date     "end_date_plan"
     t.date     "end_date_fact"
-    t.string   "ancestry",      limit: 255
-    t.float    "sum",           limit: 24
-    t.integer  "client_id",     limit: 4
-    t.integer  "division_id",   limit: 4
-    t.integer  "currency_id",   limit: 4
+    t.string   "ancestry"
+    t.float    "sum"
+    t.integer  "client_id"
+    t.integer  "division_id"
+    t.integer  "currency_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "agreements", ["client_id"], name: "index_agreements_on_client_id"
-  add_index "agreements", ["currency_id"], name: "index_agreements_on_currency_id"
-  add_index "agreements", ["division_id"], name: "index_agreements_on_division_id"
+  add_index "agreements", ["client_id"], name: "index_agreements_on_client_id", using: :btree
+  add_index "agreements", ["currency_id"], name: "index_agreements_on_currency_id", using: :btree
+  add_index "agreements", ["division_id"], name: "index_agreements_on_division_id", using: :btree
+  add_index "agreements", ["type"], name: "index_agreements_on_type", using: :btree
 
   create_table "clients", force: :cascade do |t|
-    t.string   "old_id",      limit: 255
-    t.string   "id_crm",      limit: 255
-    t.string   "name",        limit: 255
-    t.string   "inn",         limit: 255
-    t.string   "kpp",         limit: 255
-    t.integer  "low_form_id", limit: 4
+    t.string   "old_id"
+    t.string   "id_crm"
+    t.string   "name"
+    t.string   "inn"
+    t.string   "kpp"
+    t.integer  "low_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "options",     limit: 2147483647
+    t.text     "options"
   end
 
-  add_index "clients", ["low_form_id"], name: "index_clients_on_low_form_id"
+  add_index "clients", ["low_form_id"], name: "index_clients_on_low_form_id", using: :btree
 
   create_table "clients_segments", force: :cascade do |t|
-    t.integer  "client_id",  limit: 4
-    t.integer  "segment_id", limit: 4
+    t.integer  "client_id"
+    t.integer  "segment_id"
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "clients_segments", ["client_id"], name: "index_clients_segments_on_client_id"
-  add_index "clients_segments", ["segment_id"], name: "index_clients_segments_on_segment_id"
+  add_index "clients_segments", ["client_id"], name: "index_clients_segments_on_client_id", using: :btree
+  add_index "clients_segments", ["segment_id"], name: "index_clients_segments_on_segment_id", using: :btree
 
   create_table "dictionaries", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "tag",        limit: 255
-    t.string   "ancestry",   limit: 255
-    t.string   "old_name",   limit: 255
-    t.string   "old_id",     limit: 255
+    t.string   "name"
+    t.string   "tag"
+    t.string   "ancestry"
+    t.string   "old_name"
+    t.string   "old_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "value",      limit: 2147483647
   end
 
-  add_index "dictionaries", ["ancestry"], name: "index_dictionaries_on_ancestry"
+  add_index "dictionaries", ["ancestry"], name: "index_dictionaries_on_ancestry", using: :btree
 
   create_table "divisions", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.string   "number",         limit: 255
-    t.integer  "object_type_id", limit: 4
-    t.string   "ancestry",       limit: 255
-    t.string   "state",          limit: 255
+    t.string   "name"
+    t.string   "number"
+    t.integer  "object_type_id"
+    t.string   "ancestry"
+    t.string   "state"
     t.date     "open_date"
     t.date     "close_date"
-    t.text     "comment",        limit: 2147483647
-    t.string   "old_name",       limit: 255
-    t.string   "old_number",     limit: 255
+    t.text     "comment"
+    t.string   "old_name"
+    t.string   "old_number"
     t.boolean  "fl_ato"
-    t.string   "old_id",         limit: 255
+    t.string   "old_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "divisions", ["object_type_id"], name: "index_divisions_on_object_type_id"
+  add_index "divisions", ["object_type_id"], name: "index_divisions_on_object_type_id", using: :btree
 
   create_table "indicator_rules", force: :cascade do |t|
-    t.integer  "level",               limit: 4
-    t.integer  "parent_indicator_id", limit: 4
-    t.integer  "child_indicator_id",  limit: 4
+    t.integer  "level"
+    t.integer  "parent_indicator_id"
+    t.integer  "child_indicator_id"
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "old_id",              limit: 255
+    t.string   "old_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "text_condition",      limit: 2147483647
     t.text     "options",             limit: 2147483647
   end
 
-  add_index "indicator_rules", ["child_indicator_id"], name: "index_indicator_rules_on_child_indicator_id"
-  add_index "indicator_rules", ["parent_indicator_id"], name: "index_indicator_rules_on_parent_indicator_id"
+  add_index "indicator_rules", ["child_indicator_id"], name: "index_indicator_rules_on_child_indicator_id", using: :btree
+  add_index "indicator_rules", ["parent_indicator_id"], name: "index_indicator_rules_on_parent_indicator_id", using: :btree
 
   create_table "indicators", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.string   "sh_name",        limit: 255
-    t.integer  "sign_type_id",   limit: 4
-    t.text     "comment",        limit: 2147483647
-    t.integer  "date_type_id",   limit: 4
-    t.integer  "object_type_id", limit: 4
-    t.integer  "product_id",     limit: 4
-    t.integer  "accum_level_id", limit: 4
-    t.string   "old_id",         limit: 255
+    t.string   "name"
+    t.string   "sh_name"
+    t.integer  "sign_type_id"
+    t.text     "comment"
+    t.integer  "date_type_id"
+    t.integer  "object_type_id"
+    t.integer  "product_id"
+    t.integer  "accum_level_id"
+    t.string   "old_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "indicators", ["accum_level_id"], name: "index_indicators_on_accum_level_id"
-  add_index "indicators", ["date_type_id"], name: "index_indicators_on_date_type_id"
-  add_index "indicators", ["object_type_id"], name: "index_indicators_on_object_type_id"
-  add_index "indicators", ["product_id"], name: "index_indicators_on_product_id"
-  add_index "indicators", ["sign_type_id"], name: "index_indicators_on_sign_type_id"
+  add_index "indicators", ["accum_level_id"], name: "index_indicators_on_accum_level_id", using: :btree
+  add_index "indicators", ["date_type_id"], name: "index_indicators_on_date_type_id", using: :btree
+  add_index "indicators", ["object_type_id"], name: "index_indicators_on_object_type_id", using: :btree
+  add_index "indicators", ["product_id"], name: "index_indicators_on_product_id", using: :btree
+  add_index "indicators", ["sign_type_id"], name: "index_indicators_on_sign_type_id", using: :btree
 
   create_table "options", force: :cascade do |t|
-    t.string   "key",             limit: 255
-    t.string   "value",           limit: 255
-    t.string   "objectable_type", limit: 255
-    t.integer  "objectable_id",   limit: 4
+    t.string   "key"
+    t.string   "value"
+    t.string   "objectable_type"
+    t.integer  "objectable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "options", ["objectable_id", "objectable_type"], name: "index_options_on_objectable_id_and_objectable_type"
+  add_index "options", ["objectable_id", "objectable_type"], name: "index_options_on_objectable_id_and_objectable_type", using: :btree
 
 end
