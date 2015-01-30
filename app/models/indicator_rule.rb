@@ -23,8 +23,7 @@ class IndicatorRule < ActiveRecord::Base
 
   # Подсчет по правилу показателя
   def calculate(options)
-    accounts_dates = get_accounts_dates
-    accounts_dates.where{(date == my{options[:on]}) & (accounts.account_client_id == my{options[:client_id]})}.inject(0){|sum, ad| sum + ad}
+    get_accounts_dates.where{(date == my{options[:on]}) & (accounts.account_client_id == my{options[:client_id]})}.inject(0){|sum, ad| sum + ad}
   end
 
   private

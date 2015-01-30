@@ -1,3 +1,4 @@
+%div(ui-view)
 %ul
   %li(ng-repeat='c in clients')
     %a(ui-sref="clients.show({clientId:c.id})") {{c.name}}

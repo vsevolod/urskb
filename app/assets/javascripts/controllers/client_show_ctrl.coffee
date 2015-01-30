@@ -1,9 +1,12 @@
 URSKBApp
-  .controller 'ClientShowCtrl', ['$state', '$rootScope', '$stateParams', '$scope', 'Client', ($state, $rootScope, $stateParams, $scope, Client) ->
+  .controller 'ClientShowCtrl', ['$state', '$rootScope', '$stateParams', '$scope', 'Client', 'Indicator', ($state, $rootScope, $stateParams, $scope, Client, Indicator) ->
     $scope.filter = []
+    $scope.indicators = {}
 
 
     Client.get($stateParams.clientId).then (result) ->
       $scope.client = result
-      console.log($scope.client)
+
+      Indicator.calculate(63, {on: '2014-11-22', clientId: $scope.client.id}).then (results) ->
+        $scope.indicators[63] = results
   ]
