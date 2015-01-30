@@ -1,6 +1,6 @@
 class IndicatorRuleSerializer < ActiveModel::Serializer
 
-  attributes :level, :start_date, :end_date, :sql, :text_condition, :child_indicator_id, :child_name
+  attributes :level, :start_date, :end_date, :sql, :ready, :child_indicator_id, :child_name
 
   def child_name
     object.child.try(:name) || 'Без названия'

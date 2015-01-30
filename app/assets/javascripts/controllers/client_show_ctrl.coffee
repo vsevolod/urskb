@@ -7,6 +7,8 @@ URSKBApp
     Client.get($stateParams.clientId).then (result) ->
       $scope.client = result
 
-      Indicator.calculate(63, {on: '2014-11-22', clientId: $scope.client.id}).then (results) ->
-        $scope.indicators[63] = results
+    Indicator.tree({with_sql: true).then (result) ->
+
+      #Indicator.calculate(63, {on: '2015-01-20', clientId: $scope.client.id}).then (results) ->
+      #  $scope.indicators[63] = results
   ]

@@ -18,11 +18,13 @@ class Indicator < ActiveRecord::Base
   # Подсчет показателя по дереву
   def calculate(options)
     self.children_rules.on(options['on']).to_a.sum do |rule|
-      if rule.text_condition
+      if rule.ready?
         rule.calculate(options)
       else
-        rule.child.calculate(options)
-      end
+        if rule.child
+         rule.child.calculate(options)
+        end
+      end || 0
     end
   end
 end

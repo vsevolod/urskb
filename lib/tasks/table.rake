@@ -17,4 +17,12 @@ namespace :table do
     end
 
   end
+
+  desc 'Update indicatorRules when they are ready'
+  task :update_ready => :environment do
+    %w{оссзкрДОВи1221_ИБСО_т}.each do |sh_name|
+      i = Indicator.find_by_sh_name(sh_name)
+      i.children_rules.update_all(:ready => true)
+    end
+  end
 end

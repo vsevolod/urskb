@@ -1,3 +1,4 @@
+# ready - Готов для расчета (только для индикаторов нижнего уровня)
 class IndicatorRule < ActiveRecord::Base
 
   STORE_OPTIONS = {
@@ -23,7 +24,7 @@ class IndicatorRule < ActiveRecord::Base
 
   # Подсчет по правилу показателя
   def calculate(options)
-    get_accounts_dates.where{(date == my{options[:on]}) & (accounts.account_client_id == my{options[:client_id]})}.inject(0){|sum, ad| sum + ad}
+    get_accounts_dates.where{(date == my{options[:on]}) & (agreements.client_id == my{options[:client_id]})}.inject(0){|sum, ad| sum + ad.balance.to_i}
   end
 
   private
@@ -39,11 +40,11 @@ class IndicatorRule < ActiveRecord::Base
         credit_type_id = xml_options('credit-type-id', {data: 'numeric', table: 'agreements'})
         AccountsDate
           .joins(account: :agreement)
-          .where{(accounts.account_type == 'term_loan') & (agreements.type == 'Agreement::Loan')}
+          .where{(accounts.account_type == 'bad_loan') & (agreements.type == 'Agreement::Loan')}
           .where([<<-SQL, {ids: dictionary_ids}])
             (#{credit_type_id} IS NULL) OR
             (#{credit_type_id} IN (:ids)) OR
-            ((#{credit_type_id} NOT IN (:ids)) AND (agreements.start_date < '2010-01-12'))
+            (#{credit_type_id} NOT IN (:ids) AND agreements.start_date < '2010-01-12')
           SQL
           .select('balance')
       end

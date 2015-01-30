@@ -1,4 +1,4 @@
-require './lib/tables_hash'
+require './lib/win/tables_hash'
 
 module UpdateTables
   include TablesHash

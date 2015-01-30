@@ -1,7 +1,7 @@
 # coding: utf-8
 # Для работы с ADODB (Access DB)
 
-unless RUBY_PLATFORM != 'ruby'
+#unless RUBY_PLATFORM != 'ruby'
 
 require './lib/win/adodb_connection'
 require './lib/win/update_tables'
@@ -30,13 +30,13 @@ namespace :adodb do
 
     desc 'Update dictionary table'
     task dictionaries: :environment do
-      ptable 'Сегменты, группы сегментов' do
-        update_table('./public/files/db.accdb', 'SegmentGroup')
-        update_table('./public/files/db.accdb', 'Segment')
-      end
-      ptable 'Разновидность показателя' do
-        update_table('./public/files/Settings/Settings.accdb', 'PokazatVar')
-      end
+      #ptable 'Сегменты, группы сегментов' do
+      #  update_table('./public/files/db.accdb', 'SegmentGroup')
+      #  update_table('./public/files/db.accdb', 'Segment')
+      #end
+      #ptable 'Разновидность показателя' do
+      #  update_table('./public/files/Settings/Settings.accdb', 'PokazatVar')
+      #end
       ptable 'Таблицы' do
         update_table('./public/files/Settings/Settings.accdb', 'IstTable')
       end
@@ -85,4 +85,4 @@ namespace :adodb do
   end
 
 end
-end
+#end

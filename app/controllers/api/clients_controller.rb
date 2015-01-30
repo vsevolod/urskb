@@ -9,8 +9,8 @@ class Api::ClientsController < ApiController
         @clients = @clients.where("#{attr} like ?",  "%#{search[attr]}%") 
       end
     end
-    #render json: @clients.count > 10 ? [{name: 'Количество клиентов больше 10'}] : @clients
-    render json: @clients
+    render json: @clients.count > 50 ? [{name: 'Количество клиентов больше 50'}] : @clients
+    #render json: @clients
   end
 
   def show

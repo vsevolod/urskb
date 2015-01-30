@@ -138,7 +138,6 @@ module TablesHash
         sql_divider: 'EdIzm',
         sql_formul: 'Frml',
         sql_where:  Proc.new{|row| row['Uslov'].blank? || row['Uslov'] == 'n' ? nil : row['Uslov']},
-        text_condition:     Proc.new{|row| row['Uslov'].blank? || row['Uslov'] == 'n' ? nil : row['Uslov']},
         level:  Proc.new{|row| row['TypeRule'].to_i}
       }
     },
