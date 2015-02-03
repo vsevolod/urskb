@@ -2,8 +2,9 @@ URSKBApp
   .controller 'ClientIndicatorFilterCtrl', ['$state', '$rootScope', '$stateParams', '$scope', 'Client', 'Indicator', ($state, $rootScope, $stateParams, $scope, Client, Indicator) ->
     $scope.indicators = []
     $scope.filterIndicators = []
+    $scope.date = new Date
 
-    Indicator.tree().then (result) ->
+    Indicator.tree($scope.date).then (result) ->
       $scope.indicators = result
 
     $scope.toggleFilter = (indicator) ->
@@ -15,4 +16,8 @@ URSKBApp
 
     $scope.calculateIndicators = () ->
       $rootScope.filterIndicators = $scope.filterIndicators
+
+    $scope.onTimeSet = (newDate, oldDate) ->
+      if oldDate != newDate
+        $rootScope.filterDate = newDate
   ]

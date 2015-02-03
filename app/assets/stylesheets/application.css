@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require bootstrap
+ *= require angular-bootstrap-datetimepicker/datetimepicker.scss
  *= require angular-ui-tree/angular-ui-tree.min.scss
+ *= angular-date-range-picker/angular-date-range-picker.scss
  *= require_self
  */

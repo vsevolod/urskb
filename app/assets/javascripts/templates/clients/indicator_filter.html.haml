@@ -1,5 +1,9 @@
 %form.form
   %fieldset
+    .well
+      %h4 {{date | date:'dd.MM.yyyy' }}
+      %datetimepicker(data-ng-model="date" data-on-set-time="onTimeSet(newDate, oldDate)" data-datetimepicker-config="{minView: 'day'}")
+
     %script(type="text/ng-template" id="filter_indicator_renderer.html")
       %div
         %a.btn.btn-success.btn-xs(data-nodrag ng-click="toggle(this)")

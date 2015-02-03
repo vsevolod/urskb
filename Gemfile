@@ -61,13 +61,15 @@ gem 'slim'
 # Assets
 gem 'rails-assets-bootstrap'
 gem 'rails-assets-underscore'
+gem 'rails-assets-moment'
 gem 'rails-assets-angular', '~> 1.3.0'
+gem 'rails-assets-angular-moment'
 # Temprorary blocked while not updated https://github.com/angular-ui/bootstrap-bower/issues/35
 #gem 'rails-assets-angular-bootstrap'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-ui-tree'
 gem 'rails-assets-angular-breadcrumb'
-gem 'rails-assets-angular-date-range-picker'
+gem 'rails-assets-angular-bootstrap-datetimepicker'
 #gem 'rails-assets-angular-ui-router.stateHelper'
 
 gem 'angular-rails-templates'

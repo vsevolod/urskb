@@ -22,7 +22,7 @@ class Api::IndicatorsController < ApiController
   end
 
   def full_tree
-    render json: Indicator.tree()
+    render json: Indicator.tree(date: Time.parse(params[:date]))
   end
 
 #  def create

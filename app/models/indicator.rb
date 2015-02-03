@@ -30,9 +30,10 @@ class Indicator < ActiveRecord::Base
 
   # Отдаем дерево польностью.
   # TODO Можно доделать возможность отдавать только по конкретному условию.
-  def self.tree(date = Date.today)
+  def self.tree(options = {})
+    options[:date] ||= Date.today
     # Array: [id, name, parent_indicator_id]
-    records = self.connection.select_rows((<<-SQL).gsub(':date', date.to_date.to_s))
+    records = self.connection.select_rows((<<-SQL).gsub(':date', options[:date].to_date.to_s))
       select indicators.id, indicators.name, indicator_rules.parent_indicator_id
       from indicators
       full outer join indicator_rules on indicator_rules.child_indicator_id = indicators.id
