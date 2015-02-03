@@ -21,6 +21,10 @@ class Api::IndicatorsController < ApiController
     render json: @result
   end
 
+  def full_tree
+    render json: Indicator.tree()
+  end
+
 #  def create
 #    @indicator = Indicator.new(indicator_attributes)
 #    if @indicator.save

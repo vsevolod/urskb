@@ -65,7 +65,9 @@ gem 'rails-assets-angular', '~> 1.3.0'
 # Temprorary blocked while not updated https://github.com/angular-ui/bootstrap-bower/issues/35
 #gem 'rails-assets-angular-bootstrap'
 gem 'rails-assets-angular-ui-router'
+gem 'rails-assets-angular-ui-tree'
 gem 'rails-assets-angular-breadcrumb'
+gem 'rails-assets-angular-date-range-picker'
 #gem 'rails-assets-angular-ui-router.stateHelper'
 
 gem 'angular-rails-templates'

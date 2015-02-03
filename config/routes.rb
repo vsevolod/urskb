@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :indicator_rules
       collection do
         get :roots
+        get :full_tree
       end
       member do
         get :children

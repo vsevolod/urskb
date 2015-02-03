@@ -16,6 +16,6 @@ angular.module('indicator.services', ['rails'])
         return this.$get("#{this.$url()}/#{id}/calculate", options)
 
       @tree: (type) ->
-        return this.$get("#{this.$url()}/tree", type)
+        return this.$get("#{this.$url()}/full_tree", type)
 
   ]

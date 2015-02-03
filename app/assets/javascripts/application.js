@@ -2,6 +2,7 @@
 //= require underscore
 //= require angular
 //= require angular-ui-router
+//= require angular-ui-tree/angular-ui-tree.js
 //= require angular-breadcrumb
 //= require angular-rails-templates
 //= require_tree ./templates
@@ -12,6 +13,7 @@
 //= require_tree ./controllers
 
 var URSKBApp = angular.module('URSKBApp', [
+  'ui.tree',
   'dictionary.services',
   'indicator.services',
   'client.services',

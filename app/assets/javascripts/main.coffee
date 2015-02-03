@@ -2,6 +2,7 @@ URSKBApp.config(["$httpProvider", "$stateProvider", "$urlRouterProvider", ($http
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   
   $urlRouterProvider
+    .when(/clients/, '/clients')
     .otherwise("/")
   
   $stateProvider

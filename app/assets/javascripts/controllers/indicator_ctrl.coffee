@@ -29,7 +29,6 @@ URSKBApp
 
     $scope.new = ->
       url = if $scope.indicator then 'indicators.show.new' else 'indicators.new'
-      console.log(url)
       $state.go(url, $stateParams)
 
     $scope.destroy = ->

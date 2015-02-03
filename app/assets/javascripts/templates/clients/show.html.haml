@@ -1,6 +1,6 @@
 %h3 {{client.name}}
 Показатели:
 %ul
-  %li(ng-repeat="(indicator, value) in $scope.indicators")
-    {{indicator}} -- {{value}}
+  %li(ng-repeat="(indicator, result) in indicators")
+    {{result.name}} &mdash; {{result.value}}
 %hr

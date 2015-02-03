@@ -27,4 +27,36 @@ class Indicator < ActiveRecord::Base
       end || 0
     end
   end
+
+  # Отдаем дерево польностью.
+  # TODO Можно доделать возможность отдавать только по конкретному условию.
+  def self.tree(date = Date.today)
+    # Array: [id, name, parent_indicator_id]
+    records = self.connection.select_rows((<<-SQL).gsub(':date', date.to_date.to_s))
+      select indicators.id, indicators.name, indicator_rules.parent_indicator_id
+      from indicators
+      full outer join indicator_rules on indicator_rules.child_indicator_id = indicators.id
+      where indicators.id IS NOT NULL
+      AND   indicator_rules.id IS NOT NULL
+      AND (indicator_rules.start_date IS NULL OR indicator_rules.start_date <= ':date')
+      AND (indicator_rules.end_date IS NULL OR indicator_rules.end_date >= ':date')
+    SQL
+    self.get_children(records)
+  end
+
+  private
+
+    def self.get_children(records, parent_id = nil)
+      # Array: [id, name, parent_indicator_id]
+      records.find_all{|r| r[2] == parent_id}.map do |child|
+        hash = {
+          id: child[0],
+          name: child[1]
+        }
+        if (_children = self.get_children(records, child[0])).size > 0
+          hash[:indicators] = _children
+        end
+        hash
+      end
+    end
 end
