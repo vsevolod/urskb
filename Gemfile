@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 source 'http://rails-assets.org'
 
 #======== Local version ============================ FOR MS SQL Server 2008 ===================
-#gem 'rails', '4.1.9'
-#gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', tag: '4.1.0'
+gem 'rails', '4.1.9'
+gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', tag: '4.1.0'
 #======== Development version ====================== FOR MS SQL Server 2012 ===================
-gem 'rails', '4.2.0'
-gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', ref: '5a5dd78d1749b3a5e06d691f740d9ade41707eed', platforms: [:mingw, :mswin] #, tag: '4.1.0'
+#gem 'rails', '4.2.0'
+#gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', ref: '5a5dd78d1749b3a5e06d691f740d9ade41707eed', platforms: [:mingw, :mswin] #, tag: '4.1.0'
 #===================================================
 
 gem 'tiny_tds', platforms: [:mingw, :mswin]
@@ -28,8 +28,6 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',                    platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -59,13 +57,15 @@ gem 'haml'
 gem 'slim'
 
 # Assets
+gem 'rails-assets-jquery', '~> 1.9.1'
 gem 'rails-assets-bootstrap'
+gem 'rails-assets-respond'
+gem 'rails-assets-html5shiv'
 gem 'rails-assets-underscore'
 gem 'rails-assets-moment'
-gem 'rails-assets-angular', '~> 1.3.0'
+gem 'rails-assets-angular', '~> 1.2.0'
 gem 'rails-assets-angular-moment'
-# Temprorary blocked while not updated https://github.com/angular-ui/bootstrap-bower/issues/35
-#gem 'rails-assets-angular-bootstrap'
+gem 'rails-assets-angular-bootstrap'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-ui-tree'
 gem 'rails-assets-angular-breadcrumb'

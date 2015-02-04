@@ -2,6 +2,7 @@
 //= require moment
 //= require underscore
 //= require angular
+//= require angular-bootstrap
 //= require angular-moment
 //= require angular-ui-router
 //= require angular-ui-tree/angular-ui-tree.js
@@ -23,8 +24,7 @@ var URSKBApp = angular.module('URSKBApp', [
       'dictionary.services',
       'indicator.services',
       'client.services',
-      //= require angular-bootstrap
-      //'ui.bootstrap',
+      'ui.bootstrap',
       //'new.edit',
       'templates',
       'ui.router',
