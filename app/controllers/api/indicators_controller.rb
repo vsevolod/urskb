@@ -22,7 +22,8 @@ class Api::IndicatorsController < ApiController
   end
 
   def full_tree
-    render json: Indicator.tree(date: Time.parse(params[:date]))
+    date = (params[:date] ? Time.parse(params[:date]) : Date.today)
+    render json: Indicator.tree(date: date)
   end
 
 #  def create

@@ -51,11 +51,13 @@ class Indicator < ActiveRecord::Base
       # Array: [id, name, parent_indicator_id]
       records.find_all{|r| r[2] == parent_id}.map do |child|
         hash = {
-          id: child[0],
-          name: child[1]
+          label: child[1],
+          data: {
+            id: child[0]
+          }
         }
         if (_children = self.get_children(records, child[0])).size > 0
-          hash[:indicators] = _children
+          hash[:children] = _children
         end
         hash
       end

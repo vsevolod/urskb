@@ -4,18 +4,9 @@
       %h4 {{date | date:'dd.MM.yyyy' }}
       %datetimepicker(data-ng-model="date" data-on-set-time="onTimeSet(newDate, oldDate)" data-datetimepicker-config="{minView: 'day'}")
 
-    %script(type="text/ng-template" id="filter_indicator_renderer.html")
-      %div(data-nodrag)
-        %a.btn.btn-success.btn-xs(ng-click="toggle(this)")
-          %span.glyphicon(ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}")
-        {{indicator.name}}
-        %a.pull-right.btn.btn-xs(ng-class="{'btn-primary': filterIndicators.indexOf(indicator) < 0, 'btn-danger': filterIndicators.indexOf(indicator) >= 0}" ng-click="toggleFilter(indicator)")
-          %span.glyphicon(ng-class="{'glyphicon-plus': filterIndicators.indexOf(indicator) < 0, 'glyphicon-remove': filterIndicators.indexOf(indicator) >= 0}")
-        %ol(ui-tree-nodes='options' ng-model='indicator.indicators' ng-class="{hidden: collapsed}" ng-if="indicator.indicators")
-          %li(data-nodrag ng-repeat="indicator in indicator.indicators" ui-tree-node ng-include="'filter_indicator_renderer.html'")
-    %div(ui-tree="options")
-      %ol(ui-tree-nodes ng-model='indicators')
-        %li(data-nodrag ng-repeat="indicator in indicators" collapsed="true" ui-tree-node ng-include="'filter_indicator_renderer.html'")
+    .well
+      {{indicatorsTree.length}}
+      %abn-tree(tree-data="indicatorsTree")
 
     %br/
     %button(type="submit" class="btn btn-success" ng-click="calculateIndicators()") Искать

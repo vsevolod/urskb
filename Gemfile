@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 source 'http://rails-assets.org'
 
 #======== Local version ============================ FOR MS SQL Server 2008 ===================
-gem 'rails', '4.1.9'
-gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', tag: '4.1.0'
+#gem 'rails', '4.1.9'
+#gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', tag: '4.1.0'
 #======== Development version ====================== FOR MS SQL Server 2012 ===================
-#gem 'rails', '4.2.0'
-#gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', ref: '5a5dd78d1749b3a5e06d691f740d9ade41707eed', platforms: [:mingw, :mswin] #, tag: '4.1.0'
+gem 'rails', '4.2.0'
+gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter', ref: '5a5dd78d1749b3a5e06d691f740d9ade41707eed', platforms: [:mingw, :mswin] #, tag: '4.1.0'
 #===================================================
 
 gem 'tiny_tds', platforms: [:mingw, :mswin]

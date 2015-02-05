@@ -5,7 +5,7 @@
 //= require angular-bootstrap
 //= require angular-moment
 //= require angular-ui-router
-//= require angular-ui-tree/angular-ui-tree.js
+//= require jsmodules/abn_tree_directive.js
 //= require angular-breadcrumb
 //= require angular-rails-templates
 //= require angular-bootstrap-datetimepicker/datetimepicker.js
@@ -19,7 +19,7 @@
 
 moment.locale('ru');
 var URSKBApp = angular.module('URSKBApp', [
-      'ui.tree',
+      'angularBootstrapNavTree',
       'ui.bootstrap.datetimepicker',
       'dictionary.services',
       'indicator.services',
