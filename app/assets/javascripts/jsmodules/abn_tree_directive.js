@@ -67,7 +67,6 @@
             _results = [];
             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
               root_branch = _ref[_i];
-              console.log(root_branch)
               _results.push(do_f(root_branch, 1));
             }
             return _results;

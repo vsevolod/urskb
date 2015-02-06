@@ -5,8 +5,4 @@
       %datetimepicker(data-ng-model="date" data-on-set-time="onTimeSet(newDate, oldDate)" data-datetimepicker-config="{minView: 'day'}")
 
     .well
-      {{indicatorsTree.length}}
-      %abn-tree(tree-data="indicatorsTree")
-
-    %br/
-    %button(type="submit" class="btn btn-success" ng-click="calculateIndicators()") Искать
+      %abn-tree(tree-data="indicatorsTree" on-select="toggleFilter(branch)")

@@ -1,27 +1,22 @@
 URSKBApp
   .controller 'ClientShowCtrl', ['$state', '$rootScope', '$stateParams', '$scope', 'Client', 'Indicator', ($state, $rootScope, $stateParams, $scope, Client, Indicator) ->
-    $scope.indicators = {}
+    $scope.indicator = null
 
     Client.get($stateParams.clientId).then (result) ->
       $scope.client = result
 
     $scope.updateFilter = (v)->
-      Indicator.calculate(v.id, {on: $rootScope.filterDate, clientId: $scope.client.id}).then (results) ->
-        $scope.indicators[v.id] = {name: v.name, value: results}
+      Indicator.calculate(v.uid, {on: $rootScope.filterDate, clientId: $scope.client.id}).then (results) ->
+        $scope.indicator = {name: v.label, value: results}
 
-    $rootScope.$watch('filterIndicators', (new_value, old_value) ->
+    $rootScope.$watch('filterIndicator', (new_value, old_value) ->
       if new_value
-        $.each(new_value, (index,v) ->
-          if $scope.indicators[v.id] != 0 && ($scope.indicators[v.id] == undefined || $scope.indicators[v.id] != null)
-            $scope.updateFilter(v)
-        )
+        $scope.updateFilter(new_value)
     , true)
 
     $rootScope.$watch('filterDate', (new_value, old_value) ->
-      if new_value && new_value != old_value && ($rootScope.filterIndicators || []).length > 0
-        $.each($rootScope.filterIndicators, (index,v) ->
-          $scope.updateFilter(v)
-        )
+      if new_value && new_value != old_value && $rootScope.filterIndicator
+        $scope.updateFilter($rootScope.filterIndicator)
     )
 
   ]

@@ -52,9 +52,8 @@ class Indicator < ActiveRecord::Base
       records.find_all{|r| r[2] == parent_id}.map do |child|
         hash = {
           label: child[1],
-          data: {
-            id: child[0]
-          }
+          uid: child[0],
+          children: []
         }
         if (_children = self.get_children(records, child[0])).size > 0
           hash[:children] = _children
