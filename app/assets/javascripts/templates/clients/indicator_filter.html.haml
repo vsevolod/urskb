@@ -1,8 +1,12 @@
 %form.form
   %fieldset
-    .well
-      %h4 {{date | date:'dd.MM.yyyy' }}
-      %datetimepicker(data-ng-model="date" data-on-set-time="onTimeSet(newDate, oldDate)" data-datetimepicker-config="{minView: 'day'}")
+    .row
+      .col-md-6
+        %p.input-group
+          %input.form-control(type='text' datepicker-popup="{{'dd.MM.yyyy'}}" ng-model="date" is-open="opened" close-text="Закрыть" datepicker-options='dateOptions' )
+          %span.input-group-btn
+            %button.btn.btn-default(type='button' ng-click='open($event)')
+              %i.glyphicon.glyphicon-calendar
 
     .well
       %abn-tree(tree-data="indicatorsTree" on-select="toggleFilter(branch)")
