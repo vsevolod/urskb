@@ -17,7 +17,10 @@ class Api::IndicatorsController < ApiController
 
   def calculate
     @indicator = Indicator.find(params[:id])
-    @result = @indicator.calculate(params)
+    options = {}
+    options[:on] = Time.parse(params[:on])   if params[:on]
+    options[:client_id] = params[:client_id] if params[:client_id]
+    @result = @indicator.calculate(options)
     render json: @result
   end
 

@@ -13,6 +13,8 @@ angular.module('indicator.services', ['rails'])
         return this.$get("#{this.$url()}/#{id}/indicator_rules")
 
       @calculate: (id, options) ->
+        options.on += '' if options.on
+        options.clientId += '' of options.clientId
         return this.$get("#{this.$url()}/#{id}/calculate", options)
 
       @tree: (date) ->

@@ -6,8 +6,9 @@ URSKBApp
       $scope.client = result
 
     $scope.updateFilter = (v)->
-      Indicator.calculate(v.uid, {on: $rootScope.filterDate, clientId: $scope.client.id}).then (results) ->
-        $scope.indicator = {name: v.label, value: results}
+      if $scope.client
+        Indicator.calculate(v.uid, {on: $rootScope.filterDate, clientId: $scope.client.id}).then (results) ->
+          $scope.indicator = {name: v.label, value: results}
 
     $rootScope.$watch('filterIndicator', (new_value, old_value) ->
       if new_value
