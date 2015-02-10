@@ -1,5 +1,5 @@
 class AccountsDate < ActiveRecord::Base
-  belongs_to :account
+  belongs_to :account, polymorphic: true
   belongs_to :division
 
   STORE_OPTIONS = {

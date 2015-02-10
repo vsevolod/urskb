@@ -294,13 +294,50 @@ module TablesHash
       },
       additional: {
         after_save: Proc.new{|object, row|
-          # Добавляем AccountsDate
-          accounts_date = object.accounts_dates.where(date: row['Дата']).first_or_initialize
-          accounts_date.currency_balance = row['Остаток в валюте счета']
-          accounts_date.rate = row['Курс']
-          accounts_date.balance = row['Остаток в основной валюте']
-          accounts_date.division_id = get_agreement_division_proc('Код подр').call(row)
-          accounts_date.save
+          # Добавляем RecordsDate
+          records_date = object.records_dates.where(date: row['Дата']).first_or_initialize
+          records_date.currency_balance = row['Остаток в валюте счета']
+          records_date.rate = row['Курс']
+          records_date.balance = row['Остаток в основной валюте']
+          records_date.division_id = get_agreement_division_proc('Код подр').call(row)
+          records_date.save
+        }
+      }
+    },
+    '54_krOstPr_IB' => {
+      model: Account,
+      find_by: Proc.new{|_model, row| _model.f(old_id: row['ID_ACC'], number: row['Основной номер'])},
+      to: {
+        old_id: 'ID_ACC',
+        number: 'Основной номер',
+        account_type: Proc.new{|row| Dictionary['account_type_regexp'].children.find{|d| row['Основной номер'] !~ Regexp.new(d.value)}.tag.gsub('_regexp', '')},
+        currency_id: {type: 'to_dictionary', options: {tag: 'currency', old_name: 'Вал'}},
+        statement_id: 'ID_VIP',
+        start_date: 'Дата открытия',
+        end_date: 'Дата закрытия',
+        state: get_agreement_state_proc('Обобщенный статус'),
+        vsb_id: 'ID_VSB',
+        orgstruct_code: 'Код оргструкт',
+        note: 'Примечания',
+        class_id: 'CLASS_ID',
+        consolidate_account: 'Сводный счет Основной номер',
+        filial: 'Филиал Условный номер',
+        account_client_id: get_client_proc(),
+        owner_id: get_client_proc({old_id: 'ID_CLIENT_RASCH', name: 'Клиент для расчетов', inn: 'ИНН клиента для расчетов', kpp: 'КПП клиента для расчетов', id_crm: 'ID_CRM', okpo: 'ОКПО клиента для расчетов', ogrn: 'ОГРН клиента для расчетов'}),
+        agreement_id: {type: 'from_table', options: {foreign_key: 'ID_DOG', table: '66_krAccDog'}}
+      },
+      additional: {
+        after_save: Proc.new{|object, row|
+          # Добавляем RecordsDate
+          records_date = object.records_dates.where(date: row['Дата']).first_or_initialize
+          records_date.currency_balance = row['Остаток в валюте счета']
+          records_date.rate = row['Курс']
+          records_date.balance = row['Остаток в основной валюте']
+          records_date.division_id = get_agreement_division_proc('Код подр').call(row)
+          records_date.removal_date_by_account_id = row['Дата выноса по ID счета']
+          records_date.removal_date = row['Дата выноса на просрочку']
+          records_date.previous_maturity_date = row['Пред дата полн погашения проср']
+          records_date.save
         }
       }
     }

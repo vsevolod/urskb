@@ -30,13 +30,13 @@ namespace :adodb do
 
     desc 'Update dictionary table'
     task dictionaries: :environment do
-      #ptable 'Сегменты, группы сегментов' do
-      #  update_table('./public/files/db.accdb', 'SegmentGroup')
-      #  update_table('./public/files/db.accdb', 'Segment')
-      #end
-      #ptable 'Разновидность показателя' do
-      #  update_table('./public/files/Settings/Settings.accdb', 'PokazatVar')
-      #end
+      ptable 'Сегменты, группы сегментов' do
+        update_table('./public/files/db.accdb', 'SegmentGroup')
+        update_table('./public/files/db.accdb', 'Segment')
+      end
+      ptable 'Разновидность показателя' do
+        update_table('./public/files/Settings/Settings.accdb', 'PokazatVar')
+      end
       ptable 'Таблицы' do
         update_table('./public/files/Settings/Settings.accdb', 'IstTable')
       end
@@ -45,15 +45,15 @@ namespace :adodb do
     desc 'Update main tables'
     task :main do
       ptable 'Показатель' do
-        #update_table('./public/files/Settings/Settings.accdb', 'Pokazat')
+        update_table('./public/files/Settings/Settings.accdb', 'Pokazat')
       end
       ptable 'Правила показателей' do
         update_table('./public/files/Settings/Settings.accdb', 'PokRules')
       end
       ptable 'Подразделения' do
-        #update_table('./public/files/Settings/Settings.accdb', 'Podrazd')
-        #Option.where(objectable_type: 'Division', key: 'report_names').delete_all
-        #update_table('./public/files/Settings/Settings.accdb', 'PodrazdNames')
+        update_table('./public/files/Settings/Settings.accdb', 'Podrazd')
+        Option.where(objectable_type: 'Division', key: 'report_names').delete_all
+        update_table('./public/files/Settings/Settings.accdb', 'PodrazdNames')
       end
     end
 
@@ -73,7 +73,10 @@ namespace :adodb do
     desc 'Update accounts tables'
     task accounts: :environment do
       ptable '53 таблица' do
-        update_table('./public/files/tables/q1_2015_53_54.accdb', '53_krOstSr_IB')
+        #update_table('./public/files/tables/q1_2015_53_54.accdb', '53_krOstSr_IB')
+      end
+      ptable '54 таблица' do
+        update_table('./public/files/tables/q1_2015_53_54.accdb', '54_krOstPr_IB')
       end
     end
 

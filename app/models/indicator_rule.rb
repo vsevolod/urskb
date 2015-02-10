@@ -24,7 +24,12 @@ class IndicatorRule < ActiveRecord::Base
 
   # Подсчет по правилу показателя
   def calculate(options)
-    get_accounts_dates.where{(date == my{options[:on]}) & (agreements.client_id == my{options[:client_id]})}.inject(0){|sum, ad| sum + ad.balance.to_i}
+    result = get_records_dates
+    result = result.where{(date == my{options[:on]})}   if options[:on]
+    result = result.where{(date >= my{options[:from]})} if options[:from]
+    result = result.where{(date <= my{options[:to]})}   if options[:to]
+    result = result.where{(agreements.client_id == my{options[:client_id]})} if options[:client_id]
+    result.inject(0){|sum, ad| sum + ad.balance.to_i}
   end
 
   private
@@ -32,12 +37,14 @@ class IndicatorRule < ActiveRecord::Base
     # Подсчет показателей
     # TODO Вынести в отдельную библиотеку
   
-    def get_accounts_dates()
+    def get_records_dates()
       case self.old_id
       when 'PokRules::19'
         PokRules::Pr19.sql
       when 'PokRules::21'
         PokRules::Pr21.sql
+      when 'PokRules::101'
+        PokRules::Pr101.sql
       end
     end
 

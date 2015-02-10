@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130081228) do
+ActiveRecord::Schema.define(version: 20150210022029) do
 
 # Could not dump table "NPL5" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -44,21 +44,6 @@ ActiveRecord::Schema.define(version: 20150130081228) do
   add_index "accounts", ["name_id"], name: "index_accounts_on_name_id"
   add_index "accounts", ["number"], name: "index_accounts_on_number"
   add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id"
-
-  create_table "accounts_dates", force: :cascade do |t|
-    t.integer  "account_id",       limit: 4
-    t.text     "options",          limit: 2147483647
-    t.float    "balance",          limit: 24
-    t.float    "currency_balance", limit: 24
-    t.integer  "division_id",      limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.date     "date"
-    t.string   "xml_options",      limit: 255
-  end
-
-  add_index "accounts_dates", ["account_id"], name: "index_accounts_dates_on_account_id"
-  add_index "accounts_dates", ["division_id"], name: "index_accounts_dates_on_division_id"
 
   create_table "agreements", force: :cascade do |t|
     t.string   "old_id",        limit: 255
@@ -188,5 +173,21 @@ ActiveRecord::Schema.define(version: 20150130081228) do
   end
 
   add_index "options", ["objectable_id", "objectable_type"], name: "index_options_on_objectable_id_and_objectable_type"
+
+  create_table "records_dates", force: :cascade do |t|
+    t.integer  "recordable_id",    limit: 4
+    t.text     "options",          limit: 2147483647
+    t.float    "balance",          limit: 24
+    t.float    "currency_balance", limit: 24
+    t.integer  "division_id",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "date"
+    t.string   "xml_options",      limit: 255
+    t.string   "recordable_type",  limit: 255
+  end
+
+  add_index "records_dates", ["division_id"], name: "index_records_dates_on_division_id"
+  add_index "records_dates", ["recordable_id"], name: "index_records_dates_on_recordable_id"
 
 end
